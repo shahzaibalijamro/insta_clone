@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --nav-wide-width: 355px;
+    --nav-medium-width: 244px;
+    --nav-narrow-width: 72px
+}
+
+*{
+    box-sizing: content-box !important;
+}
+/* App.css */
+.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+.left-sidebar{
+    background-color: white;
+    height: 100vh;
+}
+
+.main-feed{
+    max-width: 630px;
+    width: 100%;
+    padding-right: 64px;
+    background-color: red;
+    height: 100vh;
+}
+.right-sidebar{
+    width: 319px;
+    background-color: green;
+    height: 100vh;
+}
+
+.outer-main-wrapper{
+    height: 100vh;
+    margin-left: auto;
+}
+@media(max-width:10020px){
+    .left-sidebar{
+        width: var(--nav-wide-width);
+    }
+    .outer-main-wrapper{
+        width: calc(100% - var(--nav-wide-width));
+    }
+}
+@media(max-width:1919px){
+    .left-sidebar{
+        width: var(--nav-medium-width);
+    }
+    .outer-main-wrapper{
+        width: calc(100% - var(--nav-medium-width));
+    }
+}
+@media(max-width:1263px){
+    .left-sidebar{
+        width: var(--nav-narrow-width);
+    }
+    .outer-main-wrapper{
+        width: calc(100% - var(--nav-narrow-width));
+    }
+}
+@media(max-width:767px){
+    .left-sidebar{
+        width: 0px;
+    }
+    .outer-main-wrapper{
+        width: calc(100% - 0px);
+    }
+}
+
+.dark-theme {
+    --bg-color: #101010;
+    --text-color: #f5f5f5;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}

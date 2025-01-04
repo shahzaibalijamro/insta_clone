@@ -16,8 +16,8 @@ const counterSlice = createSlice({
             state.count = 0;
         },
         wishCount: (state:{count:number},action) => {
-            console.log(action.payload, "=> payload");
-            console.log(state.count, "=> count");
+            const {num} = action.payload;
+            state.count = num;
         }
     }
 })
