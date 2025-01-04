@@ -5,32 +5,44 @@
 :root{
     --nav-wide-width: 355px;
     --nav-medium-width: 244px;
-    --nav-narrow-width: 72px
+    --nav-narrow-width: 72px;
+    --ig-separator: #262626;
+    --dark-theme-bg: #000000;
+    --dark-theme-text: #f5f5f5;
+    --light-theme-bg: #ffffff;
+    --light-theme-text: #000000;
 }
 
 *{
-    box-sizing: content-box !important;
+    box-sizing: border-box !important;
 }
-/* App.css */
+
 .light-theme {
     --bg-color: #ffffff;
     --text-color: #000000;
 }
 
+.dark-theme {
+    --bg-color: #000000;
+    --text-color: #f5f5f5;
+}
+
 .left-sidebar{
-    background-color: white;
+    background-color: var(--dark-theme-bg);
     height: 100vh;
+    padding: 8px 12px 20px 12px;
+    border-right: 1px solid var(--ig-separator);
 }
 
 .main-feed{
     max-width: 630px;
     width: 100%;
-    padding-right: 64px;
     background-color: red;
     height: 100vh;
 }
 .right-sidebar{
     width: 319px;
+    padding-left: 64px;
     background-color: green;
     height: 100vh;
 }
@@ -55,6 +67,11 @@
         width: calc(100% - var(--nav-medium-width));
     }
 }
+@media(max-width:1159px){
+    .right-sidebar{
+        display: none;
+    }
+}
 @media(max-width:1263px){
     .left-sidebar{
         width: var(--nav-narrow-width);
@@ -70,11 +87,6 @@
     .outer-main-wrapper{
         width: calc(100% - 0px);
     }
-}
-
-.dark-theme {
-    --bg-color: #101010;
-    --text-color: #f5f5f5;
 }
 
 body {
