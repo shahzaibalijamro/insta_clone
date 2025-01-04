@@ -11,11 +11,11 @@ const Home = () => {
         if (isDark) {
             document.body.classList.add("dark-theme");
             document.body.classList.remove("light-theme");
-            localStorage.setItem("isDark",true);
+            localStorage.setItem("isDark","true");
         }else{
             document.body.classList.add("light-theme")
             document.body.classList.remove("dark-theme");
-            localStorage.setItem("isDark",false);
+            localStorage.setItem("isDark","false");
         }
     }, [isDark])
     const toggleTheme = () => {
