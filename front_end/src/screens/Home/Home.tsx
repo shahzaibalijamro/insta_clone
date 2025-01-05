@@ -74,14 +74,14 @@ const Home = () => {
                         backgroundColor: hoverColor,
                         borderRadius: 8
                     }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
-                        <div className="">
+                        <div className="border border-white rounded-md">
                             <img className="flex" width={23} src={isDark ? GlassWhite : GlassDark} alt="" />
                         </div>
                         <div className="ps-4">
                             <h1 className="">Search</h1>
                         </div>
                     </div>
-                    <div onClick={handleSelected} className="left-icon-wrapper opacity-100 hover:opacity-70 cursor-not-allowed flex justify-start items-center">
+                    <div onClick={handleSelected} className="left-icon-wrapper opacity-70 notHover cursor-not-allowed flex justify-start items-center">
                         <div className="">
                             <img className="flex" width={23} src={isDark ? CompassWhite : CompassDark} alt="" />
                         </div>
@@ -89,7 +89,7 @@ const Home = () => {
                             <h1 className="">Explore</h1>
                         </div>
                     </div>
-                    <div onClick={handleSelected} className="left-icon-wrapper opacity-100 hover:opacity-70 cursor-not-allowed flex justify-start items-center">
+                    <div onClick={handleSelected} className="left-icon-wrapper opacity-70 notHover cursor-not-allowed flex justify-start items-center">
                         <div className="">
                             <img className="flex" width={23} src={isDark ? ReelWhite : ReelDark} alt="" />
                         </div>

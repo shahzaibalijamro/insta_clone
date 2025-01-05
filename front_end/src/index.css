@@ -69,6 +69,10 @@ body {
     border-radius: 8px;
 }
 
+.notHover:hover{
+    background-color: var(--bg-color) !important;
+}
+
 .backgroundTint {
     background-color: var(--ig-hover-overlay) !important;
     border-radius: 8px !important;
