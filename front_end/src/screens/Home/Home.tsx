@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react"
-import LogoWhite from "../../assets/Daco_4275592.png";
-import LogoDark from "../../assets/Daco_4669359.png";
-import HutWhite from "../../assets/home-activity (1).png";
-import EmptyHutWhite from "../../assets/home (2).png";
-import HutDark from "../../assets/image.png";
-import EmptyHutDark from "../../assets/home (1).png";
-import GlassWhite from "../../assets/loupe.png";
-import GlassDark from "../../assets/image (1).png";
-import CompassWhite from "../../assets/compass.png";
-import CompassDark from "../../assets/compass (1).png";
-import ReelWhite from "../../assets/video (2).png";
-import ReelDark from "../../assets/video.png";
+import LogoWhite from "../../assets/LogoWhite.png";
+import LogoDark from "../../assets/LogoDark.png";
+import HutWhite from "../../assets/HutWhite.png";
+import EmptyHutWhite from "../../assets/EmptyHutWhite.png";
+import HutDark from "../../assets/HutDark.png";
+import EmptyHutDark from "../../assets/EmptyHutDark.png";
+import GlassWhite from "../../assets/GlassWhite.png";
+import GlassDark from "../../assets/GlassDark.png";
+import CompassWhite from "../../assets/CompassWhite.png";
+import CompassDark from "../../assets/CompassDark.png";
+import ReelWhite from "../../assets/ReelWhite.png";
+import ReelDark from "../../assets/ReelDark.png";
+import MessengerWhite from "../../assets/MessengerWhite.png"
+import EmptyMessengerWhite from "../../assets/EmptyMessengerWhite.png"
+import MessengerDark from "../../assets/MessengerDark.png"
+import EmptyMessengerDark from "../../assets/EmptyMessengerDark.png"
 const Home = () => {
     const theme = localStorage.getItem("isDark");
     console.log(theme === "true" || "false");
@@ -41,6 +45,40 @@ const Home = () => {
             console.log(h1Element.innerText);
         }
     }
+    const showRelativeIcon = (icon:string) => {
+        if ((isDark && selectedIcon === "") || (isDark && selectedIcon === icon)) {
+            if (icon === "Home") {
+                return HutWhite
+            }
+            if (icon === "Messages") {
+                return MessengerWhite
+            }
+        }
+        if(isDark && selectedIcon !== icon && selectedIcon !== ""){
+            if (icon === "Home") {
+                return EmptyHutWhite
+            }
+            if (icon === "Messages") {
+                return EmptyMessengerWhite
+            }
+        }
+        if ((!isDark && selectedIcon === "") || (!isDark && selectedIcon === icon)) {
+            if (icon === "Home") {
+                return HutDark
+            }
+            if (icon === "Messages") {
+                return MessengerDark
+            }
+        }
+        if ((!isDark && selectedIcon !== icon && selectedIcon !== "")) {
+            if (icon === "Home") {
+                return EmptyHutDark
+            }
+            if (icon === "Messages") {
+                return EmptyMessengerDark
+            }
+        }
+    }
     console.log(selectedIcon)
     console.log(hoverColor)
     return (
@@ -54,30 +92,28 @@ const Home = () => {
                 <div className="flex-grow left-sidebar-middle">
                     <div style={selectedIcon === "Home" ? {
                         backgroundColor: hoverColor,
-                        borderRadius: 8
+                        borderRadius: 8,
+                        fontWeight: "bold"
                     }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
                         <div className="">
-                            <img className="flex" width={22} src={
-                                (isDark && selectedIcon === "") || (isDark && selectedIcon === "Home") ? HutWhite
-                                : 
-                                (isDark && selectedIcon !== "Home" && selectedIcon !== "") ? EmptyHutWhite 
-                                : 
-                                (!isDark && selectedIcon === "") || (!isDark && selectedIcon === "Home") ? HutDark 
-                                : 
-                                (!isDark && selectedIcon !== "Home" && selectedIcon !== "") ? EmptyHutDark : ""} alt="" />
+                            <img className="flex" width={22} src={showRelativeIcon("Home")} alt="" />
                         </div>
                         <div className="ps-4">
-                            <h1 className="font-bold">Home</h1>
+                            <h1 style={{fontWeight: "inherit"}} className="font-bold">Home</h1>
                         </div>
                     </div>
                     <div style={selectedIcon === "Search" ? {
                         backgroundColor: hoverColor,
-                        borderRadius: 8
+                        borderRadius: 8,
+                        width: "fit-content",
+                        border: "2px solid white"
                     }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
-                        <div className="border border-white rounded-md">
+                        <div className="">
                             <img className="flex" width={23} src={isDark ? GlassWhite : GlassDark} alt="" />
                         </div>
-                        <div className="ps-4">
+                        <div style={selectedIcon === "Search" ? {
+                        display: "none"
+                    }:{}} className="ps-4">
                             <h1 className="">Search</h1>
                         </div>
                     </div>
@@ -99,13 +135,14 @@ const Home = () => {
                     </div>
                     <div style={selectedIcon === "Messages" ? {
                         backgroundColor: hoverColor,
-                        borderRadius: 8
+                        borderRadius: 8,
+                        fontWeight: "bold"
                     }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
                         <div className="">
-                            <img className="flex" width={22} src={HutWhite} alt="" />
+                            <img className="flex" width={22} src={showRelativeIcon("Messages")} alt="" />
                         </div>
                         <div className="ps-4">
-                            <h1 className="font-bold">Messages</h1>
+                            <h1 style={{fontWeight: "inherit"}} className="">Messages</h1>
                         </div>
                     </div>
                 </div>
