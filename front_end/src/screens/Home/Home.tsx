@@ -15,12 +15,33 @@ import MessengerWhite from "../../assets/MessengerWhite.png"
 import EmptyMessengerWhite from "../../assets/EmptyMessengerWhite.png"
 import MessengerDark from "../../assets/MessengerDark.png"
 import EmptyMessengerDark from "../../assets/EmptyMessengerDark.png"
+import HeartWhite from "../../assets/heart (3).png"
+import EmptyHeartWhite from "../../assets/heart (1).png"
+import HeartDark from "../../assets/heart (2).png"
+import EmptyHeartDark from "../../assets/heart.png"
+import AddWhite from "../../assets/AddWhite.png"
+import EmptyAddWhite from "../../assets/EmptyAddWhite.png"
+import AddDark from "../../assets/AddDark.png"
+import EmptyAddDark from "../../assets/EmptyAddDark.png"
+import SlimBarWhite from "../../assets/SlimBarWhite.png"
+import SlimBarDark from "../../assets/SlimBarDark.png"
+import ThickBarWhite from "../../assets/ThickBarWhite.png"
+import ThickBarDark from "../../assets/ThickBarDark.png"
+import SettingsWhite from "../../assets/social-media (1).png"
+import SettingsDark from "../../assets/social-media.png"
+import { AvatarDemo } from "@/components/Avatar";
+import { DropdownMenuDemo } from "@/components/Dropdown";
+import { useLocation } from "react-router-dom";
 const Home = () => {
+    const currentPage = useLocation();
+    console.log(currentPage.pathname);
+    
     const theme = localStorage.getItem("isDark");
-    console.log(theme === "true" || "false");
     const [isDark, SetIsDark] = useState(theme === "true" ? true : false);
-    const [selectedIcon, setSelectedIcon] = useState("");
+    const [selectedIcon, setSelectedIcon] = useState(currentPage.pathname === "/" ? "Home" : "");
     const [hoverColor, setHoverColor] = useState("");
+    console.log(selectedIcon);
+    
     useEffect(() => {
         if (isDark) {
             setHoverColor("#1a1a1a");
@@ -45,21 +66,49 @@ const Home = () => {
             console.log(h1Element.innerText);
         }
     }
-    const showRelativeIcon = (icon:string) => {
-        if ((isDark && selectedIcon === "") || (isDark && selectedIcon === icon)) {
+    const showRelativeIcon = (icon: string) => {
+        if (isDark) {
+            if (icon === "Settings") {
+                return SettingsWhite
+            }
+        }
+        if (!isDark) {
+            if (icon === "Settings") {
+                return SettingsDark
+            }
+        }
+        if ((isDark && selectedIcon === icon)) {
             if (icon === "Home") {
                 return HutWhite
             }
             if (icon === "Messages") {
                 return MessengerWhite
             }
+            if (icon === "Notifications") {
+                return HeartWhite
+            }
+            if (icon === "Create") {
+                return AddWhite
+            }
+            if (icon === "More") {
+                return ThickBarWhite
+            }
         }
-        if(isDark && selectedIcon !== icon && selectedIcon !== ""){
+        if (isDark && selectedIcon !== icon && selectedIcon !== "") {
             if (icon === "Home") {
                 return EmptyHutWhite
             }
             if (icon === "Messages") {
                 return EmptyMessengerWhite
+            }
+            if (icon === "Notifications") {
+                return EmptyHeartWhite
+            }
+            if (icon === "Create") {
+                return EmptyAddWhite
+            }
+            if (icon === "More") {
+                return SlimBarWhite
             }
         }
         if ((!isDark && selectedIcon === "") || (!isDark && selectedIcon === icon)) {
@@ -69,6 +118,15 @@ const Home = () => {
             if (icon === "Messages") {
                 return MessengerDark
             }
+            if (icon === "Notifications") {
+                return HeartDark
+            }
+            if (icon === "Create") {
+                return AddDark
+            }
+            if (icon === "More") {
+                return ThickBarDark
+            }
         }
         if ((!isDark && selectedIcon !== icon && selectedIcon !== "")) {
             if (icon === "Home") {
@@ -77,10 +135,17 @@ const Home = () => {
             if (icon === "Messages") {
                 return EmptyMessengerDark
             }
+            if (icon === "Notifications") {
+                return EmptyHeartDark
+            }
+            if (icon === "Create") {
+                return EmptyAddDark
+            }
+            if (icon === "More") {
+                return SlimBarDark
+            }
         }
     }
-    console.log(selectedIcon)
-    console.log(hoverColor)
     return (
         <div>
             <div className="left-sidebar absolute flex flex-col">
@@ -94,26 +159,27 @@ const Home = () => {
                         backgroundColor: hoverColor,
                         borderRadius: 8,
                         fontWeight: "bold"
-                    }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
                         <div className="">
                             <img className="flex" width={22} src={showRelativeIcon("Home")} alt="" />
                         </div>
                         <div className="ps-4">
-                            <h1 style={{fontWeight: "inherit"}} className="font-bold">Home</h1>
+                            <h1 style={{ fontWeight: "inherit" }} className="font-bold">Home</h1>
                         </div>
                     </div>
                     <div style={selectedIcon === "Search" ? {
                         backgroundColor: hoverColor,
                         borderRadius: 8,
-                        width: "fit-content",
+                        width: "48px",
+                        boxSizing: "border-box",
                         border: "2px solid white"
-                    }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 box-border cursor-pointer flex justify-start items-center">
                         <div className="">
                             <img className="flex" width={23} src={isDark ? GlassWhite : GlassDark} alt="" />
                         </div>
                         <div style={selectedIcon === "Search" ? {
-                        display: "none"
-                    }:{}} className="ps-4">
+                            display: "none"
+                        } : {}} className="ps-4">
                             <h1 className="">Search</h1>
                         </div>
                     </div>
@@ -137,21 +203,65 @@ const Home = () => {
                         backgroundColor: hoverColor,
                         borderRadius: 8,
                         fontWeight: "bold"
-                    }:{}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
                         <div className="">
                             <img className="flex" width={22} src={showRelativeIcon("Messages")} alt="" />
                         </div>
                         <div className="ps-4">
-                            <h1 style={{fontWeight: "inherit"}} className="">Messages</h1>
+                            <h1 style={{ fontWeight: "inherit" }} className="">Messages</h1>
+                        </div>
+                    </div>
+                    <div style={selectedIcon === "Notifications" ? {
+                        backgroundColor: hoverColor,
+                        borderRadius: 8,
+                        fontWeight: "bold"
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                        <div className="">
+                            <img className="flex" width={22} src={showRelativeIcon("Notifications")} alt="" />
+                        </div>
+                        <div className="ps-4">
+                            <h1 style={{ fontWeight: "inherit" }} className="">Notifications</h1>
+                        </div>
+                    </div>
+                    <div style={selectedIcon === "Create" ? {
+                        backgroundColor: hoverColor,
+                        borderRadius: 8,
+                        fontWeight: "bold"
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                        <div className="">
+                            <img className="flex" width={22} src={showRelativeIcon("Create")} alt="" />
+                        </div>
+                        <div className="ps-4">
+                            <h1 style={{ fontWeight: "inherit" }} className="">Create</h1>
+                        </div>
+                    </div>
+                    <div style={selectedIcon === "Profile" ? {
+                        backgroundColor: hoverColor,
+                        borderRadius: 8,
+                        fontWeight: "bold"
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                        <div className="">
+                            <AvatarDemo clicked={selectedIcon === "Profile" ? true : false} />
+                        </div>
+                        <div className="ps-4">
+                            <h1 style={{ fontWeight: "inherit" }} className="">Profile</h1>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div className="left-icon-wrapper">
+                    {/* <div style={selectedIcon === "More" ? {
+                        backgroundColor: hoverColor,
+                        borderRadius: 8,
+                        fontWeight: "bold"
+                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
                         <div className="">
-                            <img width={20} src={HutWhite} alt="" />
+                        <img className="flex" width={22} src={showRelativeIcon("More")} alt="" />
                         </div>
-                    </div>
+                        <div className="ps-4">
+                            <h1 style={{ fontWeight: "inherit" }} className="">More</h1>
+                        </div>
+                    </div> */}
+                    <DropdownMenuDemo handleSelected={handleSelected} hoverColor={hoverColor} selectedIcon={selectedIcon === "More"} showRelativeSettingIcon={showRelativeIcon("Settings")} showRelativeIcon={showRelativeIcon("More")}/>
                 </div>
             </div>
             <div className="outer-main-wrapper">
