@@ -3,12 +3,7 @@ import {
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -20,7 +15,7 @@ interface DropdownMenuDemoProps {
     showRelativeSettingIcon: string | undefined;
 }
 
-export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, showRelativeIcon,showRelativeSettingIcon }: DropdownMenuDemoProps) {
+export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, showRelativeIcon, showRelativeSettingIcon }: DropdownMenuDemoProps) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -59,47 +54,104 @@ export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, sho
                             </div>
                         </div>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        Billing
-                        <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Your activity</h1>
+                            </div>
+                        </div>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        Settings
-                        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Saved</h1>
+                            </div>
+                        </div>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        Keyboard shortcuts
-                        <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
+                            </div>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Report a problem</h1>
+                            </div>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="h-[4px]" />
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Swicth accounts</h1>
+                            </div>
+                        </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem style={{
+                        color: 'var(--text-color)'
+                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                        <div style={selectedIcon ? {
+                            backgroundColor: hoverColor,
+                            borderRadius: 8,
+                            fontWeight: "bold"
+                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
+                            <div className="">
+                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                            </div>
+                            <div className="ps-4">
+                                <h1 style={{ fontWeight: "inherit" }} className="">Logout</h1>
+                            </div>
+                        </div>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuSub>
-                        <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-                        <DropdownMenuPortal>
-                            <DropdownMenuSubContent>
-                                <DropdownMenuItem>Email</DropdownMenuItem>
-                                <DropdownMenuItem>Message</DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>More...</DropdownMenuItem>
-                            </DropdownMenuSubContent>
-                        </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                    <DropdownMenuItem>
-                        New Team
-                        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>GitHub</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuItem disabled>API</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    Log out
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )

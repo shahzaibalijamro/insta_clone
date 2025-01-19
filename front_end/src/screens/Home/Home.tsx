@@ -35,13 +35,13 @@ import { useLocation } from "react-router-dom";
 const Home = () => {
     const currentPage = useLocation();
     console.log(currentPage.pathname);
-    
+
     const theme = localStorage.getItem("isDark");
     const [isDark, SetIsDark] = useState(theme === "true" ? true : false);
     const [selectedIcon, setSelectedIcon] = useState(currentPage.pathname === "/" ? "Home" : "");
     const [hoverColor, setHoverColor] = useState("");
     console.log(selectedIcon);
-    
+
     useEffect(() => {
         if (isDark) {
             setHoverColor("#1a1a1a");
@@ -249,19 +249,23 @@ const Home = () => {
                     </div>
                 </div>
                 <div>
-                    {/* <div style={selectedIcon === "More" ? {
-                        backgroundColor: hoverColor,
-                        borderRadius: 8,
-                        fontWeight: "bold"
-                    } : {}} onClick={handleSelected} className="left-icon-wrapper opacity-100 active:opacity-70 cursor-pointer flex justify-start items-center">
+                    <div className="left-icon-wrapper flex notHover opacity-70 cursor-not-allowed justify-start items-center">
                         <div className="">
-                        <img className="flex" width={22} src={showRelativeIcon("More")} alt="" />
+                            <img className="flex" width={22} src={showRelativeIcon("Settings")} alt="" />
                         </div>
                         <div className="ps-4">
-                            <h1 style={{ fontWeight: "inherit" }} className="">More</h1>
+                            <h1 style={{ fontWeight: "inherit" }} className="">AI Studio</h1>
                         </div>
-                    </div> */}
-                    <DropdownMenuDemo handleSelected={handleSelected} hoverColor={hoverColor} selectedIcon={selectedIcon === "More"} showRelativeSettingIcon={showRelativeIcon("Settings")} showRelativeIcon={showRelativeIcon("More")}/>
+                    </div>
+                    <div className="left-icon-wrapper notHover opacity-70 cursor-not-allowed flex justify-start items-center">
+                        <div className="">
+                            <img className="flex" width={22} src={showRelativeIcon("Settings")} alt="" />
+                        </div>
+                        <div className="ps-4">
+                            <h1 style={{ fontWeight: "inherit" }} className="">Threads</h1>
+                        </div>
+                    </div>
+                    <DropdownMenuDemo handleSelected={handleSelected} hoverColor={hoverColor} selectedIcon={selectedIcon === "More"} showRelativeSettingIcon={showRelativeIcon("Settings")} showRelativeIcon={showRelativeIcon("More")} />
                 </div>
             </div>
             <div className="outer-main-wrapper">
