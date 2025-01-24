@@ -131,10 +131,11 @@ export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, sho
                                 <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
                             </div>
                             <div className="ps-4">
-                                <h1 style={{ fontWeight: "inherit" }} className="">Swicth accounts</h1>
+                                <h1 style={{ fontWeight: "inherit" }} className="">Switch accounts</h1>
                             </div>
                         </div>
                     </DropdownMenuItem>
+                    <DropdownMenuSeparator/>
                     <DropdownMenuItem style={{
                         color: 'var(--text-color)'
                     }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
