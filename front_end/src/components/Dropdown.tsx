@@ -3,7 +3,11 @@ import {
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
+    DropdownMenuPortal,
     DropdownMenuSeparator,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -86,22 +90,70 @@ export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, sho
                             </div>
                         </div>
                     </DropdownMenuItem>
-                    <DropdownMenuItem style={{
-                        color: 'var(--text-color)'
-                    }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
-                        <div style={selectedIcon ? {
-                            backgroundColor: hoverColor,
-                            borderRadius: 8,
-                            fontWeight: "bold"
-                        } : {}} onClick={handleSelected} className="flex justify-start items-center">
-                            <div className="">
-                                <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                </DropdownMenuGroup>
+                <DropdownMenuGroup>
+                    <DropdownMenuSub>
+                        <DropdownMenuSubTrigger style={{
+                            color: 'var(--text-color)'
+                        }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                            <div style={{}} className="flex justify-start items-center">
+                                <div className="">
+                                    <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                                </div>
+                                <div className="ps-4">
+                                    <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
+                                </div>
                             </div>
-                            <div className="ps-4">
-                                <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
-                            </div>
-                        </div>
-                    </DropdownMenuItem>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                            <DropdownMenuSubContent>
+                                <DropdownMenuItem style={{
+                                    color: 'var(--text-color)'
+                                }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                                    <div style={{}} className="flex justify-start items-center">
+                                        <div className="">
+                                            <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                                        </div>
+                                        <div className="ps-4">
+                                            <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
+                                        </div>
+                                    </div></DropdownMenuItem>
+                                <DropdownMenuItem style={{
+                                    color: 'var(--text-color)'
+                                }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                                    <div style={{
+                                        backgroundColor: hoverColor,
+                                        borderRadius: 8,
+                                        fontWeight: "bold"
+                                    }} className="flex justify-start items-center">
+                                        <div className="">
+                                            <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                                        </div>
+                                        <div className="ps-4">
+                                            <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
+                                        </div>
+                                    </div></DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem style={{
+                                    color: 'var(--text-color)'
+                                }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
+                                    <div style={{
+                                        backgroundColor: hoverColor,
+                                        borderRadius: 8,
+                                        fontWeight: "bold"
+                                    }} className="flex justify-start items-center">
+                                        <div className="">
+                                            <img className="flex" width={22} src={showRelativeSettingIcon} alt="" />
+                                        </div>
+                                        <div className="ps-4">
+                                            <h1 style={{ fontWeight: "inherit" }} className="">Switch appearance</h1>
+                                        </div>
+                                    </div></DropdownMenuItem>
+                            </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuGroup>
                     <DropdownMenuItem style={{
                         color: 'var(--text-color)'
                     }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
@@ -135,7 +187,7 @@ export function DropdownMenuDemo({ selectedIcon, hoverColor, handleSelected, sho
                             </div>
                         </div>
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator/>
+                    <DropdownMenuSeparator />
                     <DropdownMenuItem style={{
                         color: 'var(--text-color)'
                     }} className="left-icon-wrapper cursor-pointer active:opacity-70 opacity-100">
